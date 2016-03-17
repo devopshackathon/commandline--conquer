@@ -8,12 +8,11 @@ app.controller("alles", function ($scope,$http) {
     $scope.availableStuff = ["afstandsbediening"];
     $scope.takenStuff = ["HDMI-kabel"];
 
-    $scope.roomsToReserve = [];
-    $scope.reserveRoom = function(room) {
-        $scope.roomsToReserve.push(room);
-        console.log($scope.roomsToReserve);
+    $scope.roomToReserve;
+    $scope.addRoom = function(room) {
+        $scope.roomToReserve = room;
+        console.log($scope.roomToReserve);
     }
-
 
     $http({
     	method:'GET',
@@ -28,5 +27,33 @@ app.controller("alles", function ($scope,$http) {
     	console.log(error);
     	})
     //$scope.datetimepicker();
-})
 
+    $scope.hdmi = false;
+    $scope.afstandsbediening = false;
+    $scope.addHdmi = function () {
+        if ($scope.hdmi) {
+            $scope.hdmi = false;
+        } else $scope.hdmi = true;
+    }
+
+    $scope.addAfstandsbediening = function () {
+        if ($scope.afstandsbediening) {
+            $scope.afstandsbediening = false;
+        } else $scope.afstandsbediening = true;
+    }
+
+    $scope.reserve = function () {
+        json =
+        {
+            "nr": $scope.roomToReserve,
+            "studentenNr": $scope.studentenNr,
+            "tijd": "",
+            "beschikbaar": false,
+            "voorwerpen":
+            {
+                "hdmi":  
+            }
+        }
+    }
+    
+})
