@@ -18,7 +18,7 @@ app.controller("alles", function ($scope,$http) {
 
     $http({
         method: 'GET',
-        url: "http://datasets.antwerpen.be/v4/gis/wifiopenbaar.json"
+        
     	//url:'http://localhost:3000/api/rooms'
     }).success(function(data)
     {
