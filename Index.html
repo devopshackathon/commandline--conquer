@@ -16,17 +16,35 @@
 <body id="home" ng-app="myapp" ng-controller="alles">
     <section class="container">
         <div class="content row">
-            <div class="dropdown">
-                
-            </div>
-        
             
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        Datum
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                    </ul>
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        Tijd
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">1u</a></li>
+                        <li><a href="#">2u</a></li>
+                        <li><a href="#">3u</a></li>
+                    </ul>
+                </div>
+           
+              
             <section class="lokalen">
                 <label>Lokalen</label>
                 <table class="table table-hover">
                    <tbody>
                        <tr class="success" ng-repeat="item in roomsAvailable">
-                           <td><input type="checkbox" ng-click="reserveRoom(item)"/></td>
+                           <td><input type="radio" ng-click="reserveRoom(item)"/></td>
                            <td>{{item}}</td>
                        </tr>
                        <tr class="danger" ng-repeat="item in roomsTaken">
@@ -40,7 +58,7 @@
                 <label>Benodigdheden</label>
                 <table class="table table-hover">
                    <tr ng-repeat="item in availableStuff">
-                       <td><input type="checkbox" /></td>
+                       <td><input type="radio" /></td>
                        <td>{{item}}</td>
                    </tr>
                 </table>
