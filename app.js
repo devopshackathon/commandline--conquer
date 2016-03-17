@@ -9,7 +9,8 @@ app.controller("alles", function ($scope) {
 
     $scope.roomsToReserve = [];
     $scope.reserveRoom = function(room) {
-        $scope.roomsToReserve.pu
+        $scope.roomsToReserve.push(room);
+        console.log($scope.roomsToReserve);
     }
     //$scope.datetimepicker();
 })
