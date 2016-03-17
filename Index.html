@@ -1,8 +1,10 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <script src="Scripts/angular.js"></script>
     <script src="Scripts/jquery-1.9.1.js"></script>
     <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/datetimepicker.js"></script>
     <script src="app.js"></script>
     <link href="Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="Content/bootstrap.css" rel="stylesheet" />
@@ -11,7 +13,62 @@
     <title></title>
 	<meta charset="utf-8" />
 </head>
-<body>
-
+<body id="home" ng-app="myapp" ng-controller="alles">
+    <section class="container">
+        <div class="content row">
+            
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        Datum
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                    </ul>
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        Tijd
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">1u</a></li>
+                        <li><a href="#">2u</a></li>
+                        <li><a href="#">3u</a></li>
+                    </ul>
+                </div>
+           
+              
+            <section class="lokalen">
+                <label>Lokalen</label>
+                <table class="table table-hover">
+                   <tbody>
+                       <tr class="success" ng-repeat="item in roomsAvailable">
+                           <td><input type="checkbox" ng-click="reserveRoom(item)"/></td>
+                           <td>{{item}}</td>
+                       </tr>
+                       <tr class="danger" ng-repeat="item in roomsTaken">
+                           <td></td>
+                           <td>{{item}}</td>
+                       </tr>
+                   </tbody>
+                </table>
+            </section>
+            <section class="benodigdheden">
+                <label>Benodigdheden</label>
+                <table class="table table-hover">
+                   <tr ng-repeat="item in availableStuff">
+                       <td><input type="checkbox" /></td>
+                       <td>{{item}}</td>
+                   </tr>
+                </table>
+            </section>
+            <section class="inputs">
+                <label>Typ hier je studentennr:</label>
+                <input type="text"/>
+                <button>Reserveer</button>
+            </section>
+        </div>
+    </section>
 </body>
 </html>
