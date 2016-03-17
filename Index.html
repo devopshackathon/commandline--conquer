@@ -44,7 +44,7 @@
                 <table class="table table-hover">
                    <tbody>
                        <tr class="success" ng-repeat="item in roomsAvailable">
-                           <td><input type="radio" ng-click="reserveRoom(item)"/></td>
+                           <td><input type="checkbox" ng-click="reserveRoom(item)"/></td>
                            <td>{{item}}</td>
                        </tr>
                        <tr class="danger" ng-repeat="item in roomsTaken">
@@ -58,7 +58,7 @@
                 <label>Benodigdheden</label>
                 <table class="table table-hover">
                    <tr ng-repeat="item in availableStuff">
-                       <td><input type="radio" /></td>
+                       <td><input type="checkbox" /></td>
                        <td>{{item}}</td>
                    </tr>
                 </table>
