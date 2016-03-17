@@ -18,7 +18,7 @@ app.controller("alles", function ($scope,$http) {
 
     $http({
         method: 'GET',
-        
+        //test
     	//url:'http://localhost:3000/api/rooms'
     }).success(function(data)
     {
