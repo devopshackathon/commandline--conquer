@@ -1,8 +1,10 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <script src="Scripts/angular.js"></script>
     <script src="Scripts/jquery-1.9.1.js"></script>
     <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/datetimepicker.js"></script>
     <script src="app.js"></script>
     <link href="Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="Content/bootstrap.css" rel="stylesheet" />
@@ -11,48 +13,25 @@
     <title></title>
 	<meta charset="utf-8" />
 </head>
-<body id="home">
+<body id="home" ng-app="myapp" ng-controller="alles">
     <section class="container">
         <div class="content row">
-            <div class="datetime">
-                <div class="row">
-                    <div class='col-sm-6'>
-                        <div class="form-group">
-                            <div class='input-group date' id='datetimepicker1'>
-                                <input type='text' class="form-control" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
+            <div class="dropdown">
+                
             </div>
-
+        
+            
             <section class="lokalen">
                 <label>Lokalen</label>
                 <table class="table table-hover">
                    <tbody>
-                       <tr>
+                       <tr class="success" ng-repeat="item in roomsAvailable">
                            <td><input type="checkbox" /></td>
+                           <td>{{item}}</td>
                        </tr>
-                       <tr>
+                       <tr class="danger" ng-repeat="item in roomsTaken">
                            <td><input type="checkbox" /></td>
-                       </tr>
-                       <tr>
-                           <td><input type="checkbox" /></td>
-                       </tr>
-                       <tr>
-                           <td><input type="checkbox" /></td>
-                       </tr>
-                       <tr>
-                           <td><input type="checkbox" /></td>
-                       </tr>
-                       <tr>
-                           <td><input type="checkbox" /></td>
-                       </tr>
-                       <tr>
-                           <td><input type="checkbox" /></td>
+                           <td>{{item}}</td>
                        </tr>
                    </tbody>
                 </table>
@@ -60,9 +39,9 @@
             <section class="benodigdheden">
                 <label>Benodigdheden</label>
                 <table class="table table-hover">
-                   <tr>
+                   <tr ng-repeat="item in availableStuff">
                        <td><input type="checkbox" /></td>
-                       <td><input type="checkbox" /></td>
+                       <td>{{item}}</td>
                    </tr>
                 </table>
             </section>
