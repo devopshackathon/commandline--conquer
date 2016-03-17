@@ -11,19 +11,20 @@ var path = require('path');
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var ObjectId = require('mongodb').ObjectId;
-var url = 'mongodb://127.0.0.1:27017/test';
+var url = 'mongodb://127.0.0.1:27017/lokalendb';
 var app = express();
 var bodyParser = require('body-parser');
+
 app.use(bodyParser.json());
 //app.use(express.json());
-//MongoClient.connect(url, function(err, db) {
-//  assert.equal(null, err);
-//  console.log("Connected correctly to server.");
-//  if (err) {
-//      console.log(err);
-//  }
-//  db.close();
-//});
+MongoClient.connect(url, function (err, db) {
+    assert.equal(null, err);
+    console.log("Connected correctly to server.");
+    if (err) {
+        console.log(err);
+    }
+    db.close();
+});
 
 
 //make sure it gets all the folders and files.
@@ -46,11 +47,17 @@ var findRoom = function (db, callback) {
 
 //get the url and send the index.html
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname+"/index.html"));
+    res.sendFile(path.join(__dirname + "/index.html"));
 });
 app.post("/api/rooms", function (req, res) {
+    //console.log(req);
+
     var insertRoom = function (db, callback) {
-        db.collection('lokalendb').insertOne({
+
+        db.collection('lokalendb').update({
+            nr: req.body.nr
+        },
+        {
             "nr": req.body.nr,
             "studentenNr": req.body.studentenNr,
             "tijd": req.body.tijd,
@@ -60,11 +67,14 @@ app.post("/api/rooms", function (req, res) {
                     "hdmi": req.body.hdmi,
                     "afstandsbediening": req.body.afstandsbediening
                 }
+        },
+        { upsert:true
         }, function (err, result) {
-            assert.equal(err, null);
-            console.log("Inserted a room into the LokaalDB collection.");
+            console.log("Updated a room!");
             callback();
         })
+
+       
     }
     MongoClient.connect(url, function (err, db) {
         assert.equal(null, err);
@@ -85,8 +95,8 @@ app.get("/api/rooms", function (req, res) {
 //listen to port 3000 
 var serverOptions = {
     port: 3000,
-    host:"localhost"
-    };
+    host: "localhost"
+};
 var server = app.listen(serverOptions, function () {
     var address = server.address().address;
     var port = server.address().port;
