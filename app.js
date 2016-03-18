@@ -42,7 +42,7 @@ app.controller("alles", function ($scope,$http) {
             $scope.afstandsbediening = false;
         } else $scope.afstandsbediening = true;
     }
-
+   
 
     //$scope.reserve = function () {
     //    json =
