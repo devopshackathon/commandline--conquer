@@ -14,7 +14,7 @@ var ObjectId = require('mongodb').ObjectId;
 var url = 'mongodb://127.0.0.1:27017/lokalendb';
 var app = express();
 var bodyParser = require('body-parser');
-
+var dataRooms = [];
 app.use(bodyParser.json());
 //app.use(express.json());
 MongoClient.connect(url, function (err, db) {
@@ -84,6 +84,19 @@ app.post("/api/rooms", function (req, res) {
     })
 });
 app.get("/api/rooms", function (req, res) {
+    var findRoom = function (db, callback) {
+        var cursor = db.collection('lokalendb').find(/*Can find specific item by doing "nr":"0.09"*/);
+        cursor.each(function (err, doc) {
+            assert.equal(err, null);
+            if (doc != null) {
+                dataRooms.push(doc);
+                console.dir(doc);
+            } else {
+                res.send(dataRooms);
+                callback();
+            }
+        })
+    }
     MongoClient.connect(url, function (err, db) {
         assert.equal(null, err);
         findRoom(db, function () {
