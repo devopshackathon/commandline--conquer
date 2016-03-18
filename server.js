@@ -21,7 +21,7 @@ MongoClient.connect(url, function (err, db) {
     assert.equal(null, err);
     console.log("Connected correctly to server.");
     if (err) {
-        console.log(err);
+        //console.log(err);
     }
     db.close();
 });
@@ -51,7 +51,7 @@ app.get("/", function (req, res) {
 });
 app.post("/api/rooms", function (req, res) {
     //console.log(req);
-
+    console.log(req.body);
     var insertRoom = function (db, callback) {
 
         db.collection('lokalendb').update({
@@ -64,8 +64,8 @@ app.post("/api/rooms", function (req, res) {
             "beschikbaar": req.body.beschikbaar,
             "voorwerpen":
                 {
-                    "hdmi": req.body.hdmi,
-                    "afstandsbediening": req.body.afstandsbediening
+                    "hdmi": req.body.voorwerpen.hdmi,
+                    "afstandsbediening": req.body.voorwerpen.afstandsbediening
                 }
         },
         { upsert:true
