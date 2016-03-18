@@ -11,16 +11,14 @@ app.controller("alles", function ($scope,$http) {
     }
 
     $scope.data;
-    $scope.availableStuff = ['afstandbediening', 'HDMI-kabel'];
+    $scope.availableStuff = ['afstandsbediening', 'HDMI-kabel'];
     $scope.takenStuff = [];
 
     $http({
         method: 'GET',
         //url: "http://datasets.antwerpen.be/v4/gis/wifiopenbaar.json"
         //url: 'http://mlab.com/databases/hackathonea/collections/lokalendb',
-        url: 'http://localhost:3000/api/rooms',
-        username: 'mathias',
-        password: 'hackathon'
+        url: 'http://localhost:3000/api/rooms'
     }).success(function(data)
     {
         $scope.data = data;
@@ -28,12 +26,18 @@ app.controller("alles", function ($scope,$http) {
     	console.log(data);
     	console.log(data[0].voorwerpen.hdmi);
     	amountHdmi = 0;
-    	for (var i = 0; i < $scope.data[i].length ; i++) {
-    	    if ($scope.data.voorwerpen.hdmi == 'True') {
+    	for (var i = 0; i < $scope.data.length ; i++) {
+    	    console.log("hello");
+    	    if ($scope.data[i].voorwerpen.hdmi == 'True') {
     	        amountHdmi++;
+    	        console.log(amountHdmi);
     	        if (amountHdmi >= 2) {
-    	            $scope.takenStuff.push('HDMI-kabel');
-    	            $scope.availableStuff.remove('HDMI-kabel');
+    	            if ($scope.takenStuff.length < 1) {
+    	                $scope.takenStuff.push('HDMI-kabel');
+    	            }
+    	            console.log($scope.takenStuff);
+    	            $scope.availableStuff.splice(1, 1);
+    	            console.log("dit is de availablestuff:" + $scope.availableStuff);
     	        }
     	    }
     	}
