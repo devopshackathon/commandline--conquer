@@ -23,12 +23,12 @@ app.controller("alles", function ($scope,$http) {
         password: 'hackathon'
     }).success(function(data)
     {
-        $scope.data = data.data;
+        $scope.data = data;
     	console.log("data geladen");
-    	console.log(data.data);
-    	console.log(data.data[0].id);
+    	console.log(data);
+    	console.log(data[0].voorwerpen.hdmi);
     	amountHdmi = 0;
-    	for (var i = 0; i < $scope.data.length() ; i++) {
+    	for (var i = 0; i < $scope.data[i].length ; i++) {
     	    if ($scope.data.voorwerpen.hdmi == 'True') {
     	        amountHdmi++;
     	        if (amountHdmi >= 2) {
