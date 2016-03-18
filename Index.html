@@ -50,13 +50,13 @@
                 <label>Lokalen</label>
                 <table class="table table-hover">
                    <tbody>
-                       <tr class="success" ng-repeat="item in data | filter: {gemeente: 'Antwerpen'}">
+                       <tr class="success" ng-repeat="item in data | filter: {beschikbaar: 'True'}">
                            <td><input type="checkbox" ng-click="addRoom(item)"/></td>
-                           <td>{{item.gemeente}}</td>
+                           <td>{{item.nr}}</td>
                        </tr>
-                       <tr class="danger" ng-repeat="item in data | filter: {gemeente: 'Berchem'}">
+                       <tr class="danger" ng-repeat="item in data | filter: {beschikbaar: 'False'}">
                            <td></td>
-                           <td>{{item.gemeente}}</td>
+                           <td>{{item.nr}}</td>
                        </tr>
                    </tbody>
                 </table>
@@ -64,13 +64,13 @@
             <section class="benodigdheden">
                 <label>Benodigdheden</label>
                 <table class="table table-hover">
-                   <tr class="success" ng-repeat="item in data | filter: {wifi_balie: 'ja'}">
+                   <tr class="success" ng-repeat="item in availableStuff">
                        <td><input type="checkbox" /></td>
-                       <td>{{item.gemeente}}</td>
+                       <td>{{item}}</td>
                    </tr>
-                    <tr class="danger" ng-repeat="item in data | filter: {wifi_balie: 'nee'}">
+                    <tr class="danger" ng-repeat="item in takenStuff">
                         <td></td>
-                        <td>{{item.gemeente}}</td>
+                        <td>{{item}}</td>
                     </tr>
                 </table>
             </section>
