@@ -50,7 +50,7 @@
                 <table class="table table-hover">
                    <tbody>
                        <tr class="success" ng-repeat="item in data | filter: {beschikbaar: 'True'}">
-                           <td><input type="checkbox" ng-click="addRoom(item)"/></td>
+                           <td><input type="checkbox" ng-click="addRoom(item.nr)"/></td>
                            <td>{{item.nr}}</td>
                        </tr>
                        <tr class="danger" ng-repeat="item in data | filter: {beschikbaar: 'False'}">
@@ -64,7 +64,7 @@
                 <label>Benodigdheden</label>
                 <table class="table table-hover">
                    <tr class="success" ng-repeat="item in availableStuff">
-                       <td><input type="checkbox" /></td>
+                       <td><input type="checkbox" ng-click="addStuff(item)"/></td>
                        <td>{{item}}</td>
                    </tr>
                     <tr class="danger" ng-repeat="item in takenStuff">
@@ -76,7 +76,7 @@
             <section class="inputs">
                 <label>Typ hier je studentennr:</label>
                 <input type="text" ng-model="studentenNr"/>
-                <button ng-click="">Reserveer</button>
+                <button ng-click="reserve()">Reserveer</button>
             </section>
         </div>
     </section>
