@@ -49,6 +49,9 @@ var findRoom = function (db, callback) {
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname + "/index.html"));
 });
+app.get("/admin", function (req, res) {
+    res.sendFile(path.join(__dirname + "/admin.html"));
+})
 app.post("/api/rooms", function (req, res) {
     //console.log(req);
     console.log(req.body);
