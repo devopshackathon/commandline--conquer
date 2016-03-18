@@ -11,7 +11,7 @@ var path = require('path');
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var ObjectId = require('mongodb').ObjectId;
-var url = 'mongodb://127.0.0.1:27017/lokalendb';
+var url = 'mongodb://joey:hackaton@ds023078.mlab.com:23078/hackatonea';
 var app = express();
 var bodyParser = require('body-parser');
 var dataRooms = [];
@@ -21,7 +21,7 @@ MongoClient.connect(url, function (err, db) {
     assert.equal(null, err);
     console.log("Connected correctly to server.");
     if (err) {
-        //console.log(err);
+        console.log(err);
     }
     db.close();
 });
