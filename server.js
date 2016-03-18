@@ -44,6 +44,10 @@ var findRoom = function (db, callback) {
         }
     })
 }
+//var deleteRoom = function (db, callback) {
+//    var collection = db.collection('lolakendb');
+//    collection.remove(id)
+//}
 
 //get the url and send the index.html
 app.get("/", function (req, res) {
@@ -52,6 +56,7 @@ app.get("/", function (req, res) {
 app.get("/admin", function (req, res) {
     res.sendFile(path.join(__dirname + "/admin.html"));
 })
+
 app.post("/api/rooms", function (req, res) {
     //console.log(req);
     console.log(req.body);
@@ -107,8 +112,10 @@ app.get("/api/rooms", function (req, res) {
             db.close();
         })
     })
-})
-
+});
+app.delete('/api/rooms', function (req, res) {
+    
+});
 //listen to port 3000 
 var serverOptions = {
     port: 3000,
