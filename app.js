@@ -11,7 +11,7 @@ app.controller("alles", function ($scope,$http) {
     $scope.roomToReserve;
     $scope.addRoom = function(room) {
         $scope.roomToReserve = room;
-        console.log($scope.roomToReserve);
+        console.log($scope.roomToReserve)
     }
 
     $scope.data;
