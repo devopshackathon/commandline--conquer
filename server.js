@@ -85,6 +85,7 @@ app.post("/api/rooms", function (req, res) {
 });
 app.get("/api/rooms", function (req, res) {
     var findRoom = function (db, callback) {
+        dataRooms = [];
         var cursor = db.collection('lokalendb').find(/*Can find specific item by doing "nr":"0.09"*/);
         cursor.each(function (err, doc) {
             assert.equal(err, null);
